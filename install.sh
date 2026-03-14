@@ -6,15 +6,23 @@ export PATH="$HOME/.local/bin:$PATH"
 
 echo "=== 检查系统依赖 ==="
 
-# 安装 git / curl
-for pkg in git curl; do
-    if ! command -v $pkg &>/dev/null; then
-        echo "$pkg 未安装，正在安装..."
-        sudo apt update && sudo apt install -y $pkg
-    else
-        echo "$pkg 已安装，跳过"
-    fi
-done
+# 检查 Git
+if ! command -v git &>/dev/null; then
+    echo "Git 未安装，正在安装..."
+    sudo apt update
+    sudo apt install -y git
+else
+    echo "Git 已安装，跳过"
+fi
+
+# 检查 curl
+if ! command -v curl &>/dev/null; then
+    echo "curl 未安装，正在安装..."
+    sudo apt update
+    sudo apt install -y curl
+else
+    echo "curl 已安装，跳过"
+fi
 
 echo "=== 安装 uv ==="
 if ! command -v uv &>/dev/null; then
