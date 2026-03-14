@@ -91,8 +91,8 @@ async def lookup_ip(
         country=city.get("country_code"),
         state=city.get("state1"),
         city=city.get("city"),
-        latitude=city.get("latitude"),
         longitude=city.get("longitude"),
+        latitude=city.get("latitude"),
         ASN=asn.get("autonomous_system_number"),
         ASO=asn.get("autonomous_system_organization"),
     )
