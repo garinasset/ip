@@ -2,7 +2,7 @@
 set -e  # 遇到错误立即退出
 
 # 临时把 ~/.local/bin 加入 PATH
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin:$PATH"
 
 echo "=== 检查系统依赖 ==="
 
