@@ -12,7 +12,7 @@ if ! command -v git &>/dev/null; then
     sudo apt update
     sudo apt install -y git
 else
-    echo "Git 已安装，跳过 "
+    echo "Git 已安装，跳过"
 fi
 
 # 检查 curl
