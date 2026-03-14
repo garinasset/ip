@@ -25,7 +25,7 @@ fastapi dev
 
 ##  2️⃣ Linux 服务器部署 (适用基于 Debian 的操作系统, 例如ubuntu 等)
 ```bash
-curl -LsSf https://https://raw.githubusercontent.com/garinasset/ip/refs/heads/main/install.sh | sh
+curl -LsSf https://raw.githubusercontent.com/garinasset/ip/refs/heads/main/install.sh | sh
 ```
 
 ## 3️⃣ 卸载
