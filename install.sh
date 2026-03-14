@@ -62,4 +62,5 @@ uv sync --frozen
 echo "=== 安装完成 ==="
 echo "虚拟环境已创建，依赖已安装"
 echo "启动 API 的命令示例："
+echo "cd ip/"
 echo "uv run uvicorn main:app --host 0.0.0.0 --port 8000"
