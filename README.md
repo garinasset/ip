@@ -11,7 +11,7 @@
 ## ✨ 核心特性
 
 - 🆓 **完全免费**：无需 API Key，无调用限制
-- 🚀 **高性能**：在线接口 双机集群部署，负载均衡
+- 🚀 **高性能**：在线接口采用 双机集群部署，负载均衡
 - 📦 **准确可靠**：采用 DB-IP 数据库，数据质量还不错
 - 🔧 **易于部署**：一键安装脚本，快速自托管
 - 📚 **完整文档**：提供 ReDoc 接口文档
@@ -41,7 +41,7 @@ fastapi dev
 
 ## 🚀 一键部署
 
-使用我们提供的一键安装脚本，快速部署到你的服务器：
+你可以使用我们提供的一键安装脚本，快速部署到你的服务器：
 ```bash
 curl -LsSf https://raw.githubusercontent.com/garinasset/ip/refs/heads/main/install.sh | bash
 ```
@@ -49,18 +49,13 @@ curl -LsSf https://raw.githubusercontent.com/garinasset/ip/refs/heads/main/insta
 该脚本会自动：
 
 - 检测系统环境
-
 - 安装必要的依赖
-
 - 配置 Python 环境
-
 - 下载最新的 IP 数据库
 
-- 启动 FastAPI 服务
+## 🗑️ 完全卸载
 
-# 🗑️ 完全卸载
-
-如果需要卸载:
+如果需要完全卸载:
 
 ```bash
 # 删除项目目录即可
