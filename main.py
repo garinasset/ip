@@ -22,8 +22,8 @@ app = FastAPI(
     lifespan=lifespan,
     root_path="/ip",
     title="api.garinasset.com",
-    version="1.0.0",
-    summary="免费 IP 查询接口",
+    version="1.0.1",
+    summary="免费 IP 地理信息查询接口",
     contact={
         "name": "嘉林资产",
         "url": "https://garinasset.com",
@@ -44,12 +44,34 @@ app.add_middleware(
 )
 
 
-@app.get("", summary="Hello ip! 🚀 https://api.garinasset.com/ip", response_class=PlainTextResponse)
+@app.get("", summary="Hello ip! 🚀 https://api.garinasset.com/ip",
+         response_class=PlainTextResponse,
+         responses={
+             200: {
+                "content": {
+                    "text/plain": {
+                        "example": "Hello ip!\n"
+                    }
+                }
+            }
+         }
+)
 async def root():
     return f"Hello ip!\n"
 
 
-@app.get("/", summary="响应 IP 地址", response_class=PlainTextResponse)
+@app.get("/", summary="响应 IP 地址",
+         response_class=PlainTextResponse,
+         responses={
+             200: {
+                "content": {
+                    "text/plain": {
+                        "example": "220.181.12.12\n"
+                    }
+                }
+            }
+         }
+)
 async def get_ip(request: Request):
     return f"{request.client.host}\n"
 
