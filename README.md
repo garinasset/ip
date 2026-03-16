@@ -4,31 +4,27 @@
 
 ---
 
-##  1️⃣ 开发
+##  1. 二次开发
 
 ```bash
 git clone https://github.com/garinasset/ip.git
-
-# Install uv with official standalone installer
 curl -LsSf https://astral.sh/uv/install.sh | sh
-
 cd ip
 
-# 如果系统已安装 python3.12, 可跳过. 理论适用python 3.10+ , 未经测试.
+# 适用 python 3.10+ , 项目开发时 作者 采用 python 3.12.
 uv python install 3.12
 
 uv venv
 uv sync --frozen
-
 fastapi dev
 ```
 
-##  2️⃣ Linux 服务器部署 (适用基于 Debian 的操作系统, 例如ubuntu 等)
+## 2. 部署安装
 ```bash
 curl -LsSf https://raw.githubusercontent.com/garinasset/ip/refs/heads/main/install.sh | bash
 ```
 
-## 3️⃣ 卸载
+## 3. 完整卸载
 ```
 rm -rf ip/
 ```
@@ -36,5 +32,4 @@ rm -rf ip/
 ## 更新与反馈
 
 - GitHub 仓库：[https://github.com/garinasset/ip](https://github.com/garinasset/ip)  
-- Issues & Bug 报告：[https://github.com/garinasset/ip/issues](https://github.com/garinasset/ip/issues)  
-- 自动更新：脚本内配置了 `@updateURL` 指向 GitHub Raw 文件，Tampermonkey 会自动检查更新
+- Issues & Bug 报告：[https://github.com/garinasset/ip/issues](https://github.com/garinasset/ip/issues)
