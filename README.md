@@ -4,7 +4,7 @@
 
 一个免费、开源、快速的 IP 地理信息查询服务。基于 mmdb 数据库，可提供稳定、毫秒级的 API 查询服务。
 
-- **在线体验**：https://ip.garinasset.com/
+- **在线体验**：https://ip.garinasset.com
 - **接口文档**：https://api.garinasset.com/ip/redoc
 - **开源仓库**：https://github.com/garinasset/ip
 

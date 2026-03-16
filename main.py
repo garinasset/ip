@@ -100,7 +100,7 @@ async def get_client(request: Request):
     return client
 
 
-@app.get("/{ip_address}", summary="查询 IP 信息", response_model=ModelResponseGeolocation)
+@app.get("/{ip_address}", summary="查询 IP 地理信息", response_model=ModelResponseGeolocation)
 async def lookup_ip(
         ip_address: Annotated[IPvAnyAddress,Path(title="IP 地址")],
 ):
