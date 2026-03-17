@@ -8,6 +8,7 @@ from pydantic import IPvAnyAddress
 from starlette.responses import PlainTextResponse
 
 from db import crud
+from models.header import Header
 from models.response import ModelResponseClient, ModelResponseGeolocation
 
 
@@ -22,7 +23,7 @@ app = FastAPI(
     lifespan=lifespan,
     root_path="/ip",
     title="api.garinasset.com",
-    version="1.0.1",
+    version="1.1.0",
     summary="免费 IP 地理信息查询接口",
     contact={
         "name": "嘉林资产",
@@ -80,21 +81,19 @@ async def get_ip(request: Request):
 async def get_client(request: Request):
 
     ip = ipaddress.ip_address(request.client.host)
-    headers = request.headers
-
-    city = crud.read_city(ip) or {}
-    asn = crud.read_asn(ip) or {}
+    headers = Header.model_validate(request.headers)
+    info = crud.read_ip_geolocation(ip)
 
     client = ModelResponseClient(
         ip=ip,
-        user_agent=headers.get("user-agent"),
-        country=city.get("country_code"),
-        state=city.get("state1"),
-        city=city.get("city"),
-        latitude=city.get("latitude"),
-        longitude=city.get("longitude"),
-        ASN=asn.get("autonomous_system_number"),
-        ASO=asn.get("autonomous_system_organization"),
+        user_agent=headers.user_agent,
+        country=info.country,
+        state=info.region,
+        city=info.city,
+        latitude=info.latitude,
+        longitude=info.longitude,
+        ASN=info.ASN,
+        ASO=info.ASO,
     )
 
     return client
@@ -105,18 +104,18 @@ async def lookup_ip(
         ip_address: Annotated[IPvAnyAddress,Path(title="IP 地址")],
 ):
     ip = ip_address
-    city = crud.read_city(ip) or {}
-    asn = crud.read_asn(ip) or {}
+
+    info = crud.read_ip_geolocation(ip)
 
     geolocation = ModelResponseGeolocation(
         ip=ip,
-        country=city.get("country_code"),
-        state=city.get("state1"),
-        city=city.get("city"),
-        longitude=city.get("longitude"),
-        latitude=city.get("latitude"),
-        ASN=asn.get("autonomous_system_number"),
-        ASO=asn.get("autonomous_system_organization"),
+        country=info.country,
+        state=info.region,
+        city=info.city,
+        latitude=info.latitude,
+        longitude=info.longitude,
+        ASN=info.ASN,
+        ASO=info.ASO
     )
 
     return geolocation
