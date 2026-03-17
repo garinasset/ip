@@ -10,6 +10,8 @@ def init_mmdb():
     _readers["city-ipv4"] = maxminddb.open_database("db/dbip-city-ipv4.mmdb")
     _readers["city-ipv6"] = maxminddb.open_database("db/dbip-city-ipv6.mmdb")
     _readers["asn"] = maxminddb.open_database("db/asn.mmdb")
+    _readers["isp-ipv4"] = maxminddb.open_database("db/isp-ipv4.mmdb")
+    _readers["isp-ipv6"] = maxminddb.open_database("db/isp-ipv6.mmdb")
 
 def read_ip_geolocation(ip: IPvAnyAddress) -> ModelDatabaseIPGeolocation:
     """
@@ -24,6 +26,12 @@ def read_ip_geolocation(ip: IPvAnyAddress) -> ModelDatabaseIPGeolocation:
     # 读取 ASN 信息
     asn_data = _readers["asn"].get(str(ip))
 
+    # 读取ISP信息
+    if ip.version == 4:
+        isp_data = _readers["isp-ipv4"].get(str(ip))
+    else:
+        isp_data = _readers["isp-ipv6"].get(str(ip))
+
     # pydantic 模型实例 输入数据 空保护
     combined_data = {}
 
@@ -32,5 +40,7 @@ def read_ip_geolocation(ip: IPvAnyAddress) -> ModelDatabaseIPGeolocation:
         combined_data.update(city_data)
     if asn_data:
         combined_data.update(asn_data)
+    if isp_data:
+        combined_data.update(isp_data)
 
     return ModelDatabaseIPGeolocation(**combined_data)

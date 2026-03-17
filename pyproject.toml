@@ -7,4 +7,5 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
     "fastapi[standard]>=0.135.1",
     "maxminddb>=3.1.1",
+    "mmdb-writer>=0.2.6",
 ]

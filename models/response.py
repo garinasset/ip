@@ -13,6 +13,7 @@ class ModelResponseClient(ModelResponseIp):
     city: Optional[str]
     longitude: Optional[float]
     latitude: Optional[float]
+    ISP: Optional[str]
     ASN: Optional[int]
     ASO: Optional[str]
 
@@ -22,5 +23,6 @@ class ModelResponseGeolocation(ModelResponseIp):
     city: Optional[str]
     longitude: Optional[float]
     latitude: Optional[float]
+    ISP: Optional[str]
     ASN: Optional[int]
     ASO: Optional[str]

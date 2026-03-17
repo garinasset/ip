@@ -19,6 +19,7 @@ class ModelDatabaseIPGeolocation(BaseModel):
     latitude: Optional[float] = None
     postcode: Optional[str] = None
     timezone: Optional[str] = None
+    ISP: Optional[str] = None
     ASN: Optional[int] = None
     ASO: Optional[str] = None
 

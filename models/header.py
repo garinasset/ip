@@ -31,7 +31,7 @@ class Header(BaseModel):
     x_forwarded_for: Optional[str] = None
 
     # ------------------------------
-    # Nginx 透传 Cloudflare Geo Header
+    # Cloudflare Geo Header
     # ------------------------------
     cf_ipcountry: Optional[str] = None
     cf_ipcity: Optional[str] = None

@@ -9,3 +9,5 @@ wheels/
 # Virtual environments
 .venv
 /.idea
+/tools/isp/isp-ipv4.mmdb
+/tools/isp/isp-ipv6.mmdb
