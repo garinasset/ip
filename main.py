@@ -81,6 +81,7 @@ async def get_ip(request: Request):
 async def get_client(request: Request):
 
     ip = ipaddress.ip_address(request.client.host)
+    print(request.headers)
     headers = Header.model_validate(request.headers)
     print(headers)
     info = crud.read_ip_geolocation(ip)
