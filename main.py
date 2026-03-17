@@ -81,14 +81,19 @@ async def get_ip(request: Request):
 async def get_client(request: Request):
 
     ip = ipaddress.ip_address(request.client.host)
-    print(request.headers)
-    headers = Header.model_validate(request.headers)
-    print(headers)
+
+    # 未来应用: 如果需要更多 header 信息
+    # headers = Header.model_validate(request.headers)
+
     info = crud.read_ip_geolocation(ip)
 
     client = ModelResponseClient(
         ip=ip,
-        user_agent=headers.user_agent,
+
+        # 未来应用: 如果需要更多 header 信息的调用示例
+        # user_agent=headers.user_agent,
+
+        user_agent=request.headers.get("User-Agent"),
         country=info.country,
         state=info.region,
         city=info.city,
