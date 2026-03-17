@@ -82,6 +82,7 @@ async def get_client(request: Request):
 
     ip = ipaddress.ip_address(request.client.host)
     headers = Header.model_validate(request.headers)
+    print(headers)
     info = crud.read_ip_geolocation(ip)
 
     client = ModelResponseClient(
