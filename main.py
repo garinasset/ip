@@ -26,8 +26,8 @@ app = FastAPI(
     version="2.0.0",
     summary="免费 IP 地理信息查询接口",
     contact={
-        "name": "嘉林资产",
-        "url": "https://garinasset.com",
+        "name": "嘉林数据",
+        "url": "https://ip.garinasset.com",
         "email": "contact@garinasset.com",
     },
     license_info={
