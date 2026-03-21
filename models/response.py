@@ -9,7 +9,7 @@ class ModelResponseIp(BaseModel):
 class ModelResponseClient(ModelResponseIp):
     user_agent: Optional[str]
     country: Optional[str]
-    state: Optional[str]
+    region: Optional[str]
     city: Optional[str]
     longitude: Optional[float]
     latitude: Optional[float]
@@ -19,7 +19,7 @@ class ModelResponseClient(ModelResponseIp):
 
 class ModelResponseGeolocation(ModelResponseIp):
     country: Optional[str]
-    state: Optional[str]
+    region: Optional[str]
     city: Optional[str]
     longitude: Optional[float]
     latitude: Optional[float]

@@ -95,7 +95,7 @@ async def get_client(request: Request):
 
         user_agent=request.headers.get("User-Agent"),
         country=info.country,
-        state=info.region,
+        region=info.region,
         city=info.city,
         latitude=info.latitude,
         longitude=info.longitude,
@@ -118,7 +118,7 @@ async def lookup_ip(
     geolocation = ModelResponseGeolocation(
         ip=ip,
         country=info.country,
-        state=info.region,
+        region=info.region,
         city=info.city,
         latitude=info.latitude,
         longitude=info.longitude,
