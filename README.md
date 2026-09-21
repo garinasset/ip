@@ -1,4 +1,4 @@
-# [IP 地理信息查询接口 © 嘉林数据](https://api.garinasset.com/ip/redoc)
+# [IP 地理 API © 嘉林数据](https://api.garinasset.com/ip/redoc)
 ## 🧩 技术栈
 
 | 技术 | 作用 |
