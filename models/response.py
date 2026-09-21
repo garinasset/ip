@@ -1,28 +1,26 @@
-from typing import Optional
-from pydantic import BaseModel
-from pydantic import IPvAnyAddress
+from pydantic import BaseModel, IPvAnyAddress
 
 
 class ModelResponseIp(BaseModel):
     ip: IPvAnyAddress
 
 class ModelResponseClient(ModelResponseIp):
-    user_agent: Optional[str]
-    country: Optional[str]
-    region: Optional[str]
-    city: Optional[str]
-    longitude: Optional[float]
-    latitude: Optional[float]
-    ISP: Optional[str]
-    ASN: Optional[int]
-    ASO: Optional[str]
+    user_agent: str | None = None
+    country: str | None = None
+    region: str | None = None
+    city: str | None = None
+    longitude: float | None = None
+    latitude: float | None = None
+    ISP: str | None = None
+    ASN: int | None = None
+    ASO: str | None = None
 
 class ModelResponseGeolocation(ModelResponseIp):
-    country: Optional[str]
-    region: Optional[str]
-    city: Optional[str]
-    longitude: Optional[float]
-    latitude: Optional[float]
-    ISP: Optional[str]
-    ASN: Optional[int]
-    ASO: Optional[str]
+    country: str | None = None
+    region: str | None = None
+    city: str | None = None
+    longitude: float | None = None
+    latitude: float | None = None
+    ISP: str | None = None
+    ASN: int | None = None
+    ASO: str | None = None

@@ -3,12 +3,11 @@ from contextlib import asynccontextmanager
 from typing import Annotated
 
 from fastapi import FastAPI, Request, Path
-from fastapi.middleware.cors import CORSMiddleware
 from pydantic import IPvAnyAddress
+from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import PlainTextResponse
 
 from db import crud
-from models.header import Header
 from models.response import ModelResponseClient, ModelResponseGeolocation
 
 
@@ -22,7 +21,7 @@ async def lifespan(_app: FastAPI):
 app = FastAPI(
     lifespan=lifespan,
     root_path="/ip",
-    title="api.garinasset.com",
+    title="https://api.garinasset.com/ip",
     version="2.0.0",
     summary="免费 IP 地理信息查询接口",
     contact={
@@ -36,9 +35,10 @@ app = FastAPI(
     }
 )
 
+
 # 允许跨域
 app.add_middleware(
-    CORSMiddleware,
+    CORSMiddleware,  # type: ignore[arg-type]
     allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
@@ -74,13 +74,16 @@ async def root():
          }
 )
 async def get_ip(request: Request):
-    return f"{request.client.host}\n"
+    client = request.client
+    assert client is not None
+    return f"{client.host}\n"
 
 
 @app.get("/client", summary="响应 客户端 信息", response_model=ModelResponseClient)
 async def get_client(request: Request):
-
-    ip = ipaddress.ip_address(request.client.host)
+    client = request.client
+    assert client is not None
+    ip = ipaddress.ip_address(client.host)
 
     # 未来应用: 如果需要更多 header 信息
     # headers = Header.model_validate(request.headers)
