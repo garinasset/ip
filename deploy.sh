@@ -1,4 +1,3 @@
-```bash
 #!/bin/bash
 
 set -e
@@ -153,4 +152,3 @@ sudo systemctl --no-pager --full status "$SERVICE" | head -n 10
 
 # 完成
 echo "==> Deployment finished."
-```
