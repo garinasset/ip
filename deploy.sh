@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -Eeuo pipefail
 
 # 基础配置
 APP_DIR="/home/deploy/ip"
@@ -147,7 +147,7 @@ sudo systemctl restart "$SERVICE"
 
 # 检查服务状态
 echo "==> Checking service status"
-sudo systemctl --no-pager --full status "$SERVICE" | head -n 10
+sudo systemctl --no-pager --full status "$SERVICE"
 
 
 # 完成
