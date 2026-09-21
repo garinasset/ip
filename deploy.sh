@@ -1,7 +1,7 @@
 ```bash
 #!/bin/bash
 
-set -Eeuo pipefail
+set -e
 
 # 基础配置
 APP_DIR="/home/deploy/ip"
