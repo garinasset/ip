@@ -14,7 +14,7 @@ def _merge_if_mapping(target: dict[str, Any], data: Any) -> None:
 
 
 def init_mmdb():
-    _readers["city-ipv4"] = maxminddb.open_database("db/geolite2-city-ipv4.mmdb")
+    _readers["city-ipv4"] = maxminddb.open_database("db/dbip-city-ipv4.mmdb")
     _readers["city-ipv6"] = maxminddb.open_database("db/geolite2-city-ipv6.mmdb")
     _readers["asn"] = maxminddb.open_database("db/geolite2-asn.mmdb")
     _readers["isp-ipv4"] = maxminddb.open_database("db/isp-ipv4.mmdb")

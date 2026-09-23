@@ -123,11 +123,11 @@ download_file \
     "https://github.com/sapics/ip-location-db/releases/download/latest/geolite2-asn.mmdb" \
     "geolite2-asn.mmdb" || true
 
-# # 下载 DBIP City IPv4
+# 下载 DBIP City IPv4
 
-# download_file \
-#     "https://github.com/sapics/ip-location-db/releases/download/latest/dbip-city-ipv4.mmdb" \
-#     "dbip-city-ipv4.mmdb" || true
+download_file \
+    "https://github.com/sapics/ip-location-db/releases/download/latest/dbip-city-ipv4.mmdb" \
+    "dbip-city-ipv4.mmdb" || true
 
 # # 下载 DBIP City IPv6
 
@@ -135,11 +135,11 @@ download_file \
 #     "https://github.com/sapics/ip-location-db/releases/download/latest/dbip-city-ipv6.mmdb" \
 #     "dbip-city-ipv6.mmdb" || true
 
-# 下载 GeoLite2 City IPv4
+# # 下载 GeoLite2 City IPv4
 
-download_file \
-    "https://github.com/sapics/ip-location-db/releases/download/latest/geolite2-city-ipv4.mmdb" \
-    "geolite2-city-ipv4.mmdb" || true
+# download_file \
+#     "https://github.com/sapics/ip-location-db/releases/download/latest/geolite2-city-ipv4.mmdb" \
+#     "geolite2-city-ipv4.mmdb" || true
 
 # 下载 GeoLite2 City IPv6
 

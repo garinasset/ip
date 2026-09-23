@@ -19,3 +19,4 @@ db/dbip-asn.mmdb
 db/isp-ipv4.mmdb
 db/isp-ipv6.mmdb
 db/geolite2-asn.mmdb
+db/dbip-city-ipv4.mmdb
