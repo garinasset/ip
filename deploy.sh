@@ -2,6 +2,8 @@
 
 set -Eeuo pipefail
 
+hostname
+
 # 基础配置
 
 APP_DIR="/home/deploy/ip"
