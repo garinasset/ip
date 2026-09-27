@@ -22,12 +22,12 @@ app = FastAPI(
     lifespan=lifespan,
     root_path="/ip",
     title="https://api.garinasset.com/ip",
-    version="2.0.0",
-    summary="免费 IP 地理信息查询接口",
+    version="3.0.0",
+    summary="IP 地理 API © 嘉林数据 ",
     contact={
-        "name": "嘉林数据",
+        "name": "技术支持",
         "url": "https://ip.garinasset.com",
-        "email": "contact@garinasset.com",
+        "email": "support@garinasset.com",
     },
     license_info={
         "name": "CC BY 4.0",
