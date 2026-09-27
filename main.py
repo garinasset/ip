@@ -61,7 +61,7 @@ async def root():
     return f"Hello ip!\n"
 
 
-@app.get("/", summary="响应 IP 地址",
+@app.get("/", summary="响应 本地 IP 地址",
          response_class=PlainTextResponse,
          responses={
              200: {
@@ -79,7 +79,7 @@ async def get_ip(request: Request):
     return f"{client.host}\n"
 
 
-@app.get("/client", summary="响应 客户端 信息", response_model=ModelResponseClient)
+@app.get("/client", summary="响应 本地客户端 信息", response_model=ModelResponseClient)
 async def get_client(request: Request):
     client = request.client
     assert client is not None
@@ -110,7 +110,7 @@ async def get_client(request: Request):
     return client
 
 
-@app.get("/{ip_address}", summary="查询 IP 地理信息", response_model=ModelResponseGeolocation)
+@app.get("/{ip_address}", summary="返回 指定 IP 地址的 IP 地理信息", response_model=ModelResponseGeolocation)
 async def lookup_ip(
         ip_address: Annotated[IPvAnyAddress,Path(title="IP 地址")],
 ):
@@ -131,3 +131,27 @@ async def lookup_ip(
     )
 
     return geolocation
+
+@app.get("/{ip_address}/country", summary="返回 指定 IP 地址所在国家的两位国家代码 ( ISO 3166-1 alpha-2 )",
+        response_class=PlainTextResponse,
+                 responses={
+                     200: {
+                        "content": {
+                            "text/plain": {
+                                "example": "CN"
+                            }
+                        }
+                    }
+                 }  
+        )
+async def lookup_ip_country(
+        ip_address: Annotated[IPvAnyAddress,Path(title="IP 地址")],
+):
+    ip = ip_address
+
+    info = crud.read_ip_geolocation(ip)
+
+    if info is None or not info.country:
+        return "ZZ"
+
+    return f"{info.country}"
