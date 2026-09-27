@@ -22,7 +22,7 @@ app = FastAPI(
     lifespan=lifespan,
     root_path="/ip",
     title="https://api.garinasset.com/ip",
-    version="3.0.0",
+    version="4.0.0",
     summary="IP 地理 API © 嘉林数据 ",
     contact={
         "name": "技术支持",
@@ -110,7 +110,7 @@ async def get_client(request: Request):
     return client
 
 
-@app.get("/{ip_address}", summary="返回 指定 IP 地址的 IP 地理信息", response_model=ModelResponseGeolocation)
+@app.get("/{ip_address}", summary="返回 指定 IP 地址的 地理信息", response_model=ModelResponseGeolocation)
 async def lookup_ip(
         ip_address: Annotated[IPvAnyAddress,Path(title="IP 地址")],
 ):
@@ -132,7 +132,8 @@ async def lookup_ip(
 
     return geolocation
 
-@app.get("/{ip_address}/country", summary="返回 指定 IP 地址所在国家的两位国家代码 ( ISO 3166-1 alpha-2 )",
+
+@app.get("/{ip_address}/country", summary="返回 指定 IP 地址的 国家代码 ( ISO 3166-1 alpha-2 )",
         response_class=PlainTextResponse,
                  responses={
                      200: {
@@ -155,3 +156,28 @@ async def lookup_ip_country(
         return "ZZ"
 
     return f"{info.country}"
+
+
+@app.get("/{ip_address}/isp", summary="返回 指定 IP 地址的 运营商信息",
+        response_class=PlainTextResponse,
+                 responses={
+                     200: {
+                        "content": {
+                            "text/plain": {
+                                "example": "中国移动"
+                            }
+                        }
+                    }
+                 }  
+        )
+async def lookup_ip_isp(
+        ip_address: Annotated[IPvAnyAddress,Path(title="IP 地址")],
+):
+    ip = ip_address
+
+    info = crud.read_ip_geolocation(ip)
+
+    if info is None or not info.ISP:
+        return "未知"
+
+    return f"{info.ISP}"
