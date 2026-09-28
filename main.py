@@ -158,7 +158,7 @@ async def lookup_ip_country(
     return f"{info.country}"
 
 
-@app.get("/{ip_address}/isp", summary="返回 指定 IP 地址的 运营商信息",
+@app.get("/{ip_address}/isp", summary="返回 指定 IP 地址的 运营商",
         response_class=PlainTextResponse,
                  responses={
                      200: {
