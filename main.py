@@ -51,14 +51,14 @@ app.add_middleware(
              200: {
                 "content": {
                     "text/plain": {
-                        "example": "Hello ip!\n"
+                        "example": "Hello ip!"
                     }
                 }
             }
-         }
+         }  
 )
 async def root():
-    return f"Hello ip!\n"
+    return f"Hello ip!"
 
 
 @app.get("/", summary="响应 本地 IP 地址",
@@ -67,7 +67,7 @@ async def root():
              200: {
                 "content": {
                     "text/plain": {
-                        "example": "220.181.12.12\n"
+                        "example": "220.181.12.12"
                     }
                 }
             }
@@ -76,7 +76,7 @@ async def root():
 async def get_ip(request: Request):
     client = request.client
     assert client is not None
-    return f"{client.host}\n"
+    return f"{client.host}"
 
 
 @app.get("/client", summary="响应 本地客户端 信息", response_model=ModelResponseClient)
