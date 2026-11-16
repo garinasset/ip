@@ -20,7 +20,6 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(
     lifespan=lifespan,
-    root_path="/ip",
     title="https://api.garinasset.com/ip",
     version="4.0.0",
     summary="IP 地理 API © 嘉林数据 ",
@@ -45,7 +44,7 @@ app.add_middleware(
 )
 
 
-@app.get("", summary="Hello ip! 🚀 https://api.garinasset.com/ip",
+@app.get("/", summary="Hello ip! 🚀 https://api.garinasset.com/ip",
          response_class=PlainTextResponse,
          responses={
              200: {
@@ -61,7 +60,7 @@ async def root():
     return f"Hello ip!"
 
 
-@app.get("/", summary="响应 本地 IP 地址",
+@app.get("/me", summary="响应 本地 IP 地址",
          response_class=PlainTextResponse,
          responses={
              200: {

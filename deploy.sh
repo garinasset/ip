@@ -119,12 +119,6 @@ move_if_downloaded() {
     fi
 }
 
-# 下载 GeoLite2 ASN
-
-download_file \
-    "https://github.com/sapics/ip-location-db/releases/download/latest/geolite2-asn.mmdb" \
-    "geolite2-asn.mmdb" || true
-
 # 下载 DBIP City IPv4
 
 download_file \
@@ -148,6 +142,12 @@ download_file \
 download_file \
     "https://github.com/sapics/ip-location-db/releases/download/latest/geolite2-city-ipv6.mmdb" \
     "geolite2-city-ipv6.mmdb" || true
+
+# 下载 GeoLite2 ASN
+
+download_file \
+    "https://github.com/sapics/ip-location-db/releases/download/latest/geolite2-asn.mmdb" \
+    "geolite2-asn.mmdb" || true
 
 # 下载 ISP 数据
 
@@ -188,8 +188,8 @@ download_file \
 echo "==> Updating successfully downloaded databases"
 
 move_if_downloaded "geolite2-asn.mmdb"
-# move_if_downloaded "dbip-city-ipv4.mmdb"
-# move_if_downloaded "dbip-city-ipv6.mmdb"
+move_if_downloaded "dbip-city-ipv4.mmdb"
+move_if_downloaded "dbip-city-ipv6.mmdb"
 move_if_downloaded "geolite2-city-ipv4.mmdb"
 move_if_downloaded "geolite2-city-ipv6.mmdb"
 
